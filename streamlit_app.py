@@ -1,26 +1,24 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 import streamlit as st
-import os
+from selenium import webdriver
 
-chrome_options = Options()
-chrome_options.binary_location = "/usr/bin/chromium-browser"  # Update if different
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-dev-shm-usage")
+def scrape_title(url):
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')  
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(options=options)  
+    driver.get(url)  
+    title = driver.title  
+    driver.quit()  
+    return title
 
-# Properly create Service object
-service = Service("/usr/local/bin/chromedriver")  # Path to your chromedriver
+st.title("Chrome Web Scraping with Selenium")
 
-# Launch driver with service and options
-driver = webdriver.Chrome(service=service, options=chrome_options)
-
-# @st.cache_resource
-# def get_driver():
-#     service = Service(executable_path=os.path.join(os.getcwd(), "chromedriver"))
-#     return webdriver.Chrome(service=service, options=options)
-
-# driver = get_driver()
-driver.get("https://find-and-update.company-information.service.gov.uk/")
-st.code(driver.page_source)
+url = st.text_input("Enter URL:")
+if st.button("Scrape"):
+    if url:
+        st.write("Scraping title from:", url)
+        title = scrape_title(url)
+        st.write("Title:", title)
+    else:
+        st.write("Please enter a URL.")
