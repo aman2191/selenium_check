@@ -14,7 +14,7 @@ def scrape_title(url):
 
     service = Service(executable_path=chrome_driver_path)
     driver = webdriver.Chrome(service=service, options=options)
-    driver.get(url)
+    driver.get(url) 
     title = driver.title
     driver.quit()
     return title
