@@ -1,8 +1,1 @@
 libnss3
-libgconf-2-4
-libfontconfig1
-libxss1
-libasound2
-libappindicator3-1
-libnspr4
-chromium-browser
