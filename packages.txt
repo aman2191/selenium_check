@@ -5,3 +5,5 @@ libxss1
 libasound2
 libappindicator3-1
 libnspr4
+chromium
+chromium-driver
