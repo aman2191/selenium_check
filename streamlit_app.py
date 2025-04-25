@@ -5,7 +5,7 @@ import os
 
 def scrape_title(url):
     # Set correct path for chromedriver
-    chrome_driver_path = os.path.join(os.getcwd(), "chromedriver.exe")
+    chrome_driver_path = os.path.join(os.getcwd(), "chromedriver")
 
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
