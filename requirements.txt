@@ -1,4 +1,2 @@
-selenium
-webdriver_manager
-undetected-chromedriver
-distutils
+streamlit
+selenium==4.20.0
